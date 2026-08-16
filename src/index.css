@@ -1,0 +1,267 @@
+:root {
+  /* Skyltens blått – urtvättat, som gammal målad plåt */
+  --blue-900: #1e3a4f;
+  --blue-800: #27495f;
+  --blue-700: #315a73;
+  --blue-600: #4c7c95;
+  --blue-100: #d3dfe4;
+
+  /* Läder & valnöt – verkstadens grundmaterial */
+  --leather-900: #2b1c11;
+  --leather-800: #3d2917;
+  --leather-700: #5c3f26;
+  --tan: #b98a5c;
+  --tan-soft: #d8bb92;
+
+  /* Vaxad tråd – terrakotta */
+  --orange: #b3502b;
+  --orange-soft: #cd6c40;
+
+  /* Kraftpapper & obehandlat trä */
+  --cream: #e8dac2;
+  --cream-deep: #dccdb1;
+  --paper: #f6ecd9;
+  --paper-hi: #fdf7ea;
+  --white: #fdf7ea;
+
+  /* Varm bläckfärg istället för kall grå */
+  --ink: #33251a;
+  --muted: #6d5b47;
+  --line: #d3bd9b;
+  --line-strong: #b99f78;
+
+  /* Kantigare former – snickrat, inte gjutet */
+  --radius: 10px;
+  --radius-sm: 6px;
+
+  /* Torra, jordiga skuggor */
+  --shadow: 0 10px 20px rgba(60, 38, 18, 0.1);
+  --shadow-lg: 0 20px 40px rgba(60, 38, 18, 0.18);
+  --maxw: 1120px;
+
+  /* Stygn – återkommande läderdetalj */
+  --stitch: 1.5px dashed rgba(94, 66, 40, 0.38);
+  --stitch-light: 1.5px dashed rgba(255, 248, 235, 0.28);
+
+  --sans: "Karla", "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  --serif: "Fraunces", Georgia, "Times New Roman", serif;
+  --stencil: "Oswald", "Haettenschweiler", "Arial Narrow", sans-serif;
+  --script: "Caveat", "Segoe Script", cursive;
+
+  /* Fint papperskorn – avfärgat och lågmält så texten får vara i fred */
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.2'/%3E%3C/svg%3E");
+
+  font-family: var(--sans);
+  color: var(--ink);
+  line-height: 1.65;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body {
+  margin: 0;
+  background-color: var(--cream);
+  background-image: var(--grain);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Papperskorn över hela sidan – nätt och jämnt märkbart, ligger över texten */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background-image: var(--grain);
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "SOFT" 40, "WONK" 1;
+  font-weight: 600;
+  line-height: 1.14;
+  margin: 0;
+  color: var(--leather-900);
+  letter-spacing: -0.005em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: var(--blue-700);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  padding: 90px 0;
+}
+
+.section--paper {
+  position: relative;
+  background-color: var(--paper);
+  background-image: var(--grain);
+  border-top: 1px solid var(--line-strong);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+/* Sömmar längs sektionskanterna, som på en lädersula */
+.section--paper::before,
+.section--paper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 0;
+  border-top: var(--stitch);
+  pointer-events: none;
+}
+
+.section--paper::before {
+  top: 6px;
+}
+
+.section--paper::after {
+  bottom: 6px;
+}
+
+.section__head {
+  max-width: 640px;
+  margin: 0 auto 52px;
+  text-align: center;
+}
+
+.section__head h2 {
+  font-size: clamp(2.1rem, 3.8vw, 2.8rem);
+}
+
+/* Löpande stygn med sylmärke i mitten */
+.section__head h2::after {
+  content: "";
+  display: block;
+  width: 140px;
+  height: 10px;
+  margin: 16px auto 0;
+  background: no-repeat center/contain
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='10' viewBox='0 0 140 10'%3E%3Cpath d='M2 5 H56' stroke='%23b99f78' stroke-width='2' stroke-dasharray='9 7' stroke-linecap='round'/%3E%3Cpath d='M84 5 H138' stroke='%23b99f78' stroke-width='2' stroke-dasharray='9 7' stroke-linecap='round'/%3E%3Cpath d='M70 0.5 L74.5 5 L70 9.5 L65.5 5 Z' fill='%23b3502b'/%3E%3C/svg%3E");
+}
+
+.section__head p {
+  color: var(--muted);
+  margin-top: 18px;
+  font-size: 1.1rem;
+}
+
+/* Handskriven "hälsning" istället för korporativ versal-etikett */
+.eyebrow {
+  display: inline-block;
+  font-family: var(--script);
+  font-weight: 600;
+  font-size: 1.7rem;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--orange);
+  margin-bottom: 6px;
+  transform: rotate(-2deg);
+}
+
+/* Knappar = stämplade skyltar, inte piller */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 26px;
+  border-radius: var(--radius-sm);
+  font-family: var(--stencil);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  outline: var(--stitch-light);
+  outline-offset: -6px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.btn--primary {
+  background: var(--blue-700);
+  color: var(--paper-hi);
+  border-color: var(--blue-900);
+  box-shadow: 0 8px 16px rgba(30, 58, 79, 0.28);
+}
+
+.btn--primary:hover {
+  background: var(--blue-800);
+}
+
+.btn--accent {
+  background: var(--orange);
+  color: var(--paper-hi);
+  border-color: #8c3d1f;
+  box-shadow: 0 8px 16px rgba(140, 61, 31, 0.3);
+}
+
+.btn--accent:hover {
+  background: var(--orange-soft);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--leather-800);
+  border-color: var(--line-strong);
+  outline: var(--stitch);
+}
+
+.btn--ghost:hover {
+  border-color: var(--leather-700);
+  background: var(--paper-hi);
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 64px 0;
+  }
+}

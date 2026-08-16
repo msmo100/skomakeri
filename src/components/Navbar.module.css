@@ -1,0 +1,163 @@
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(232, 218, 194, 0.86);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.barScrolled {
+  background: rgba(246, 236, 217, 0.94);
+  border-bottom-color: var(--line-strong);
+  box-shadow: 0 8px 20px rgba(60, 38, 18, 0.1);
+}
+
+/* Söm längs listens underkant när man scrollat */
+.barScrolled::after {
+  content: "";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 5px;
+  border-top: var(--stitch);
+  pointer-events: none;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.logoMark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  background: var(--blue-700);
+  border: 1.5px solid var(--blue-900);
+  outline: var(--stitch-light);
+  outline-offset: -5px;
+  color: var(--paper-hi);
+}
+
+.logoMark svg {
+  width: 22px;
+  height: 22px;
+}
+
+.logoText {
+  font-family: var(--serif);
+  font-variation-settings: "SOFT" 40, "WONK" 1;
+  font-weight: 700;
+  font-size: 1.32rem;
+  color: var(--leather-900);
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav a {
+  color: var(--leather-800);
+  font-family: var(--stencil);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.nav a:hover {
+  color: var(--orange);
+  text-decoration: none;
+}
+
+.mobileCall {
+  display: none;
+}
+
+.callBtn {
+  padding: 10px 20px;
+  font-size: 0.95rem;
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.burger span {
+  width: 24px;
+  height: 2px;
+  background: var(--leather-800);
+  border-radius: 2px;
+}
+
+@media (max-width: 820px) {
+  .callBtn {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .nav {
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    box-shadow: var(--shadow);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.28s ease;
+  }
+
+  .navOpen {
+    max-height: 420px;
+  }
+
+  .nav a {
+    padding: 16px 24px;
+    border-top: 1px dashed var(--line-strong);
+  }
+
+  .mobileCall {
+    display: block;
+    color: var(--orange) !important;
+    font-weight: 700;
+  }
+}

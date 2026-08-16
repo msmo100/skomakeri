@@ -1,0 +1,94 @@
+/* Mörkt valnötsläder som avslutar sidan */
+.footer {
+  position: relative;
+  background-color: var(--leather-900);
+  background-image: var(--grain),
+    linear-gradient(180deg, #3a2717 0%, var(--leather-900) 100%);
+  color: var(--paper-hi);
+  padding: 50px 0 0;
+  border-top: 3px solid var(--leather-700);
+}
+
+/* Söm längs överkanten */
+.footer::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  top: 9px;
+  border-top: var(--stitch-light);
+  pointer-events: none;
+}
+
+.inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 34px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-sm);
+  background: rgba(253, 247, 234, 0.1);
+  border: 1px solid rgba(253, 247, 234, 0.22);
+  outline: var(--stitch-light);
+  outline-offset: -6px;
+  color: var(--tan-soft);
+}
+
+.mark svg {
+  width: 24px;
+  height: 24px;
+}
+
+.name {
+  font-family: var(--serif);
+  font-variation-settings: "SOFT" 40, "WONK" 1;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--paper-hi);
+}
+
+.tagline {
+  color: var(--tan);
+  font-size: 0.95rem;
+}
+
+.meta {
+  color: var(--tan-soft);
+  text-align: right;
+}
+
+.meta a {
+  color: var(--tan-soft);
+}
+
+.meta a:hover {
+  color: var(--paper-hi);
+}
+
+.copy {
+  border-top: 1px dashed rgba(216, 187, 146, 0.3);
+  text-align: center;
+  padding: 20px 0;
+  color: var(--tan);
+  font-size: 0.88rem;
+}
+
+@media (max-width: 640px) {
+  .meta {
+    text-align: left;
+  }
+}
