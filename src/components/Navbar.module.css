@@ -2,15 +2,14 @@
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(232, 218, 194, 0.86);
-  backdrop-filter: blur(12px);
+  background: #e8dac2;
   border-bottom: 1px solid transparent;
   transition: box-shadow 0.2s ease, border-color 0.2s ease,
     background 0.2s ease;
 }
 
 .barScrolled {
-  background: rgba(246, 236, 217, 0.94);
+  background: var(--paper);
   border-bottom-color: var(--line-strong);
   box-shadow: 0 8px 20px rgba(60, 38, 18, 0.1);
 }
