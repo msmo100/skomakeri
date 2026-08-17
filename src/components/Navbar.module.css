@@ -1,7 +1,13 @@
 .bar {
-  position: sticky;
+  /* fixed, inte sticky: på iOS ligger sticky kvar i layout-viewporten när
+     adressfältet fälls ihop, så sidan glider upp ovanför listen */
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
+  /* täck även remsan under statusfältet */
+  padding-top: env(safe-area-inset-top, 0px);
   background: #e8dac2;
   border-bottom: 1px solid transparent;
   transition: box-shadow 0.2s ease, border-color 0.2s ease,
@@ -131,7 +137,7 @@
 
   .nav {
     position: absolute;
-    top: 72px;
+    top: 100%;
     left: 0;
     right: 0;
     flex-direction: column;

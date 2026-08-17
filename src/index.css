@@ -38,6 +38,7 @@
   --shadow: 0 10px 20px rgba(60, 38, 18, 0.1);
   --shadow-lg: 0 20px 40px rgba(60, 38, 18, 0.18);
   --maxw: 1120px;
+  --header-h: 72px;
 
   /* Stygn – återkommande läderdetalj */
   --stitch: 1.5px dashed rgba(94, 66, 40, 0.38);
@@ -62,28 +63,23 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 84px;
+  scroll-padding-top: calc(84px + env(safe-area-inset-top, 0px));
 }
 
 body {
   margin: 0;
+  /* listen ligger fixed och tar ingen plats i flödet */
+  padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
   background-color: var(--cream);
   background-image: var(--grain);
   color: var(--ink);
   -webkit-font-smoothing: antialiased;
 }
 
-/* Papperskorn över hela sidan – nätt och jämnt märkbart, ligger över texten */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-  pointer-events: none;
-  background-image: var(--grain);
-  opacity: 0.12;
-  mix-blend-mode: multiply;
-}
+/* Papperskorn: bakas in i sektionernas egna bakgrunder (se .section--paper,
+   .hero m.fl.) i stället för ett fast blend-lager över hela sidan. Ett
+   position: fixed-lager med mix-blend-mode tvingar iOS Safari att blanda mot
+   en ögonblicksbild av sidan, vilket gav kvarhängande bildrutor vid scroll. */
 
 h1,
 h2,
@@ -120,7 +116,9 @@ img {
   width: 100%;
   max-width: var(--maxw);
   margin: 0 auto;
-  padding: 0 24px;
+  /* max() håller innehållet undan kameraurtaget i liggande läge */
+  padding: 0 max(24px, env(safe-area-inset-right, 0px)) 0
+    max(24px, env(safe-area-inset-left, 0px));
 }
 
 .section {
