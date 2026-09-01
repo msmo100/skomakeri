@@ -21,6 +21,32 @@ export const contact = {
   },
 };
 
+// =============================================================================
+//  KONTAKTFORMULÄR
+// =============================================================================
+// Formuläret skickar mejl via tjänsten FormSubmit (formsubmit.co) – ingen egen
+// server behövs. Mottagarens mejladress står ALDRIG i koden, utan i filen
+// `.env.local` här på datorn (och som miljövariabel hos webbhotellet):
+//
+//     VITE_FORMSUBMIT_CODE=din-hemliga-kod
+//
+// Saknas koden visas inget formulär alls på sidan.
+// Se README.md → "Kontaktformulär" för hur du aktiverar och hämtar koden.
+
+export const contactForm = {
+  code: import.meta.env.VITE_FORMSUBMIT_CODE ?? "",
+
+  // Rubriker och texter i formuläret – ändra fritt.
+  title: "Skicka ett meddelande",
+  text: "Beskriv kort vad du behöver hjälp med så återkommer vi så snart vi kan.",
+  buttonLabel: "Skicka meddelande",
+  subject: "Nytt meddelande från hemsidan",
+  successTitle: "Tack för ditt meddelande!",
+  successText: "Vi hör av oss så snart vi kan.",
+  errorText:
+    "Något gick fel när meddelandet skulle skickas. Försök igen om en stund – eller ring oss.",
+};
+
 export const openingHours = [
   { day: "Måndag–Fredag", time: "09:00 – 18:00" },
   { day: "Lördag", time: "09:00 – 14:00" },

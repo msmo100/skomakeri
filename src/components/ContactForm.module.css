@@ -1,0 +1,209 @@
+.panel {
+  max-width: 700px;
+  margin: 40px auto 0;
+  padding: 36px 34px;
+  background-color: var(--paper-hi);
+  background-image: var(--grain);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  outline: var(--stitch);
+  outline-offset: -9px;
+  box-shadow: var(--shadow);
+}
+
+.head {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
+.head h3 {
+  font-size: 1.6rem;
+}
+
+.head p {
+  color: var(--muted);
+  margin-top: 10px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.label {
+  font-family: var(--stencil);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.label em {
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  opacity: 0.75;
+}
+
+.field input,
+.field textarea {
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  width: 100%;
+  box-shadow: inset 0 2px 5px rgba(92, 63, 38, 0.1);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease,
+    background 0.15s ease;
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: rgba(109, 91, 71, 0.6);
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  background: var(--white);
+  border-color: var(--orange);
+  box-shadow: 0 0 0 3px rgba(179, 80, 43, 0.16);
+}
+
+/* Röd markering först när fältet lämnats tomt/felaktigt, inte medan man skriver */
+.field input:not(:placeholder-shown):invalid,
+.field textarea:not(:placeholder-shown):invalid {
+  border-color: #a8412a;
+}
+
+.honey {
+  display: none;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.actions button[disabled] {
+  opacity: 0.65;
+  cursor: progress;
+  transform: none;
+}
+
+.small {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.status:empty {
+  display: none;
+}
+
+.error {
+  display: block;
+  padding: 12px 14px;
+  border: 1px solid #a8412a;
+  border-radius: var(--radius-sm);
+  background: rgba(179, 80, 43, 0.08);
+  color: #7d2f1c;
+  font-size: 0.95rem;
+}
+
+.error a {
+  color: inherit;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Kvittot efter skickat meddelande */
+.done {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+  padding: 52px 34px;
+}
+
+.doneIcon {
+  display: grid;
+  place-items: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--paper-hi);
+  border: 1px solid #8c3d1f;
+  box-shadow: var(--shadow);
+}
+
+.doneIcon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.done p {
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.devNote {
+  max-width: 700px;
+  margin: 40px auto 0;
+  padding: 16px 18px;
+  border: 1.5px dashed var(--line-strong);
+  border-radius: var(--radius-sm);
+  color: var(--muted);
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .panel {
+    padding: 28px 20px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .actions button {
+    justify-content: center;
+  }
+
+  .small {
+    text-align: center;
+  }
+}

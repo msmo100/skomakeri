@@ -1,5 +1,6 @@
 import { contact } from "../content";
 import Icon from "./Icon";
+import ContactForm from "./ContactForm";
 import styles from "./Contact.module.css";
 
 export default function Contact() {
@@ -9,7 +10,10 @@ export default function Contact() {
         <div className="section__head">
           <span className="eyebrow">Säg hej!</span>
           <h2>Hör av dig</h2>
-          <p>Ring oss eller kom förbi – vi svarar gärna på dina frågor!</p>
+          <p>
+            Ring, kom förbi eller skicka ett meddelande – vi svarar gärna på
+            dina frågor!
+          </p>
         </div>
 
         <div className={styles.grid}>
@@ -34,6 +38,8 @@ export default function Contact() {
             </span>
           </a>
         </div>
+
+        <ContactForm />
       </div>
     </section>
   );
